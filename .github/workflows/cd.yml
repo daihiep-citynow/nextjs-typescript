@@ -24,8 +24,9 @@ jobs:
           script: |
             cd ~/resource/nextjs-typescript
             git pull origin develop
+            rm -rf node_modules
+            rm -rf .next
             npm i
-            ls -a
             pm2 delete 0
             npm run build
             pm2 start "npm start"
