@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss",
+    "stylelint-config-recommended-scss"
+  ],
+  "files": ["**/*.scss"],
+  "plugins": ["stylelint-prettier", "stylelint-scss"],
+  "rules": {
+    "prettier/prettier": [
+      true,
+      {
+        "singleQuote": false
+      }
+    ],
+    "selector-class-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$"
+  }
+}
