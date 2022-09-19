@@ -1,0 +1,28 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: appleboy/ssh-action@master
+      - name: Connect to VPS and run command
+        with:
+          host: ${{ secrets.SERVER_NAME}}
+          username: ${{ secrets.SERVER_USER}}
+          key: ${{ secrets.SSH_KEY}}
+          port: 22
+          script: |
+            cd ~/resource/nextjs-typescript
+            git pull
+            npm i
+            npm run build
+            pm2 reload 0
+            service nginx reload
+            echo "Success Automation Deploy"
