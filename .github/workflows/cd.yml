@@ -19,7 +19,7 @@ jobs:
           port: 22
           script: |
             cd ~/resource/nextjs-typescript
-            git pull
+            git pull origin develop
             pm2 delete 0
             npm i
             npm run build

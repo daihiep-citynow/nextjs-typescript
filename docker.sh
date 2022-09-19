@@ -1,8 +1,8 @@
 cd ~/resource/nextjs-typescript
-git pull
+git pull origin develop
+pm2 delete 0
 npm i
 npm run build
-npm run start
-pm2 reload 0
+pm2 start "npm start"
 service nginx reload
 echo "Success Automation Deploy"
