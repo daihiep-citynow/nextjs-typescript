@@ -20,9 +20,9 @@ jobs:
           script: |
             cd ~/resource/nextjs-typescript
             git pull
+            pm2 delete 0
             npm i
             npm run build
-            pm2 delete 0
-            pm2 start "npm run start"
+            pm2 start "npm start"
             service nginx reload
             echo "Success Automation Deploy"
