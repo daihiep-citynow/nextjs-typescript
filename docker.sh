@@ -1,4 +1,8 @@
-docker-compose stop
-docker-compose rm -f
-docker-compose pull
-docker-compose up -d
+cd ~/resource/nextjs-typescript
+git pull
+npm i
+npm run build
+npm run start
+pm2 reload 0
+service nginx reload
+echo "Success Automation Deploy"

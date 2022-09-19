@@ -9,12 +9,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
       - name: Connect to VPS and run command
         uses: appleboy/ssh-action@master
         with:
@@ -27,6 +22,7 @@ jobs:
             git pull
             npm i
             npm run build
+            npm run start
             pm2 reload 0
             service nginx reload
             echo "Success Automation Deploy"
