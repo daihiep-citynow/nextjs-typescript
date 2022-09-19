@@ -17,12 +17,4 @@ jobs:
           username: ${{ secrets.SERVER_USER}}
           key: ${{ secrets.SSH_KEY}}
           port: 22
-          script: |
-            cd ~/resource/nextjs-typescript
-            git pull origin develop
-            pm2 delete 0
-            npm i
-            npm run build
-            pm2 start "npm start"
-            service nginx reload
-            echo "Success Automation Deploy"
+          script: sh docker.sh
